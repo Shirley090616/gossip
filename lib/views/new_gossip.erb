@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <title>Créer un potin</title>
+  </head>
+  <body>
+    <h1>Crée un potin !</h1>
+    <p>Balance ton potin via le formulaire ci-dessous</p>
+    <form action='/gossips/new/' method='POST'>
+    # form action='/gossips/new/', indique l'URL ou le formulaire va etre envoye
+    # method='POST', method precise le type de requete
+      Saisi ici ton nom :  <input type='text' name='gossip_author'/><br/>
+      # champ saisie de "text" par utilisateur, name= sert a indiquer la valeur qui a été envoye
+      Balance ton potin : <input type='text' name='gossip_content'/><br/>
+      # champ saisie de "text" par utilisateur, name=sert a indiquer la valeur de l'envoi
+      <input type='submit'/> # bouton soumettre
+    </form>
+  </body>
+</html>
