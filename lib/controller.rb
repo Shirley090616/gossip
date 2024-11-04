@@ -1,10 +1,12 @@
-require "gossip"
-gossip.require
+require './lib/gossip'
 
 class ApplicationController < Sinatra::Base # Appli... hérite de la
     # classe sinatra et il aura les même fonctionnalites que sinatra
   get '/' do
     erb :index, locals: {gossips: Gossip.all}
+  end
+
+  get '/gossips/new' do
     erb :new_gossip
   end
 
@@ -24,8 +26,9 @@ class ApplicationController < Sinatra::Base # Appli... hérite de la
     @gossip = Gossip.find(id) # Assurez-vous d'avoir la méthode find définie dans Gossip
     erb :show # Cela affichera le fichier show.erb
 
-    if gossip
+    if @gossip
       "Voici le potin que tu veux : Auteur - #{gossip.author}, Contenu - #{gossip.content}"
+      erb :show # Cela affichera le fichier show.erb
     else
       "Potin non trouvé pour l'ID : #{id}"
     end
