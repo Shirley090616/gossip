@@ -1,4 +1,5 @@
-require_relative 'gossip'
+require "bundler"
+bundler.require
 
 class ApplicationController < Sinatra::Base # Appli... hérite de la
     # classe sinatra et il aura les même fonctionnalites que sinatra
