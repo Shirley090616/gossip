@@ -1,5 +1,5 @@
-require "bundler"
-bundler.require
+require "gossip"
+gossip.require
 
 class ApplicationController < Sinatra::Base # Appli... hérite de la
     # classe sinatra et il aura les même fonctionnalites que sinatra
@@ -20,8 +20,16 @@ class ApplicationController < Sinatra::Base # Appli... hérite de la
   end
 
   get '/gossips/:id' do
-    @gossip = Gossip.find(params[:id]) # Assurez-vous d'avoir la méthode find définie dans Gossip
+    id = params['id']
+    @gossip = Gossip.find(id) # Assurez-vous d'avoir la méthode find définie dans Gossip
     erb :show # Cela affichera le fichier show.erb
+
+    if gossip
+      "Voici le potin que tu veux : Auteur - #{gossip.author}, Contenu - #{gossip.content}"
+    else
+      "Potin non trouvé pour l'ID : #{id}"
+    end
+    
   end
 
   post '/gossips/new/' do
